@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Feedback</title>
+</head>
+    <style>
+        b{
+            color: red;
+            font-family: cursive;
+            font-size: 30px;
+        }
+    </style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-md-8">
+                <h2>
+                    Your FeedBack are----
+                </h2>
+                {% if Feedback %}
+                    {% for i in Feedback %}
+                        {% if i.Rating  and i.Rating %}
+                              <b>
+                                     Name:{{ i.Name }}<br>
+                              </b>
+                            Rating:{{ i.Rating }}<br>
+                            Location : {{ i.Location }}<br>
+                            Date:{{ i.Date }}<br>
+                            Feedback:{{ i.Feedback }}<br><br>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                    <h3>Feeback are not Available</h3>
+            <form METHOD="post">
+            <h2>
+                Please give your Feedback
+            </h2>
+                {% csrf_token %}
+            {{ fform }}<br>
+            <input type="Submit" value="Send">
+                <input type="Reset" value="clear">
+            </form>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
